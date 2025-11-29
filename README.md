@@ -14,12 +14,49 @@ Desenvolver uma API RESTful que permita:
 ## Tecnologias
 
 - Java 21
-- Spring Boot 3.x
+- Spring Boot 3.2
 - Spring Security com JWT
 - Spring Data JPA
-- H2/PostgreSQL
+- MySQL 8.0
+- Docker & Docker Compose
 - Logging com SLF4J/Logback
-- Criptografia de dados sensíveis
+
+## Pré-requisitos
+
+- Docker
+- Docker Compose
+
+## Como executar
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/brunohenriquecontente/Grace-Consulting-Tecnologia-Desafio-Tecnico.git
+cd Grace-Consulting-Tecnologia-Desafio-Tecnico
+```
+
+2. Configure as variáveis de ambiente (opcional):
+```bash
+cp .env.example .env
+# Edite o arquivo .env conforme necessário
+```
+
+3. Execute com Docker Compose:
+```bash
+docker-compose up -d
+```
+
+4. A API estará disponível em: `http://localhost:8080`
+
+## Parando a aplicação
+
+```bash
+docker-compose down
+```
+
+Para remover também os volumes (dados do banco):
+```bash
+docker-compose down -v
+```
 
 ## Status
 
