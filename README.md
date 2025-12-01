@@ -21,12 +21,21 @@ Desenvolver uma API RESTful que permita:
 - Docker & Docker Compose
 - Logging com SLF4J/Logback
 
-## Pré-requisitos
+## Usuário Padrão
 
+A aplicação inicializa com um usuário padrão para testes:
+- **Username:** `user`
+- **Password:** `user`
+
+---
+
+## Opção 1: Executando com Docker Compose (Recomendado)
+
+### Pré-requisitos
 - Docker
 - Docker Compose
 
-## Como executar
+### Passos
 
 1. Clone o repositório:
 ```bash
@@ -34,7 +43,7 @@ git clone https://github.com/brunohenriquecontente/Grace-Consulting-Tecnologia-D
 cd Grace-Consulting-Tecnologia-Desafio-Tecnico
 ```
 
-2. Configure as variáveis de ambiente (opcional):
+2. (Opcional) Configure as variáveis de ambiente:
 ```bash
 cp .env.example .env
 # Edite o arquivo .env conforme necessário
@@ -42,25 +51,71 @@ cp .env.example .env
 
 3. Execute com Docker Compose:
 ```bash
-docker-compose up -d
+docker compose up --build -d
 ```
 
 4. A API estará disponível em: `http://localhost:8080`
+5. Acesse a documentação Swagger: `http://localhost:8080/swagger-ui.html`
 
-## Parando a aplicação
+## Opção 2: Executando na IDE 
 
+### Pré-requisitos
+- Java 21 (JDK)
+- Maven 3.9+
+- IntelliJ IDEA
+- Docker (apenas para o MySQL)
+
+### Passos
+
+1. Clone o repositório e abra no IntelliJ:
 ```bash
-docker-compose down
+git clone https://github.com/brunohenriquecontente/Grace-Consulting-Tecnologia-Desafio-Tecnico.git
+```
+- No IntelliJ: File > Open > Selecione a pasta do projeto
+
+2. Suba apenas o MySQL via Docker:
+```bash
+docker-compose up -d mysql
 ```
 
-Para remover também os volumes (dados do banco):
+3. Configure o JDK 21 no IntelliJ:
+- File > Project Structure > Project > SDK: selecione Java 21
+- File > Project Structure > Project > Language Level: 21
+
+4. Execute a aplicação:
+- Navegue até `src/main/java/com/graceconsulting/cardmanagement/CardManagementApplication.java`
+- Clique com botão direito > Run 'CardManagementApplication'
+- Ou use o atalho: `Shift + F10` (após configurar)
+
+5. A API estará disponível em: `http://localhost:8080`
+6. Acesse a documentação Swagger: `http://localhost:8080/swagger-ui.html`
+
+### Configuração Alternativa (Via Maven)
+
+Se preferir executar via terminal:
+
 ```bash
-docker-compose down -v
+# Suba o MySQL
+docker-compose up -d mysql
+
+# Execute a aplicação
+./mvnw spring-boot:run
 ```
 
-## Status
+Ou no Windows:
+```bash
+mvnw.cmd spring-boot:run
+```
 
-🚧 Em desenvolvimento
+---
+
+## Documentação da API
+
+Após iniciar a aplicação, acesse:
+- **Swagger UI:** http://localhost:8080/swagger-ui.html
+- **OpenAPI JSON:** http://localhost:8080/v3/api-docs
+
+---
 
 ## Referência
 
